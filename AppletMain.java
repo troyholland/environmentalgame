@@ -27,13 +27,21 @@ public class AppletMain extends JApplet {
 		newQuiz = new QuizScreen(myApplet);
 		add(newQuiz);
 		
+		validate();
+		repaint();
+		
 	}
 	
 	public void quizToGame() {
 		
-		int intToPassToGame = newQuiz.calculateGameDifficulty();
+		//int intToPassToGame = newQuiz.calculateGameDifficulty();
 		remove(newQuiz);
-		newGame = new Game(intToPassToGame, myApplet);
+		newGame = new Game(7, myApplet); // put in random int
+		
+		add(newGame);
+		
+		validate();
+		repaint();
 		
 	}
 	
@@ -44,6 +52,9 @@ public class AppletMain extends JApplet {
 		newSummary = new SummaryScreen(myApplet);
 		add(newSummary);
 		
+		validate();
+		repaint();
+		
 	}
 	
 	public void sumToFunGame() {
@@ -51,6 +62,9 @@ public class AppletMain extends JApplet {
 		remove(newSummary);
 		
 		add(newGame);
+		
+		validate();
+		repaint();
 		
 	}
 	
@@ -60,6 +74,10 @@ public class AppletMain extends JApplet {
 	public void init()
 	{
 		myApplet = this;
+		// set up JApplet
+		setSize(frameWidth, frameHeight);
+		setVisible(true);
+		
 		try {
 			 SwingUtilities.invokeAndWait(new Runnable() {
 			 public void run() {
@@ -81,9 +99,8 @@ public class AppletMain extends JApplet {
 				 System.err.println("error");
 			 }					
 		
-		// set up JApplet
-		setSize(frameWidth, frameHeight);
-		setVisible(true);
+		
+		
 	}
 	
 }

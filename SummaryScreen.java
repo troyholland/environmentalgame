@@ -1,3 +1,5 @@
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -5,12 +7,12 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+//import QuizScreen.openQuizButtonListener;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -20,57 +22,68 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class HomeScreen extends JPanel {
-
-	private JPanel homePage;
+public class SummaryScreen extends JPanel {
+	
+private JPanel sumGameScreen;
 	
 	private AppletMain applet;
-	
-	private JPanel openQuizButtonPanel;
-	
-	private JButton openQuizButton;
 	
 	class openQuizButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			applet.homeToQuiz();
+			applet.sumToFunGame();
 		}
 	}
 	
 	
-	public HomeScreen(AppletMain appletParameter)
+	public SummaryScreen(AppletMain appletParameter)
 	{
 		
-		applet = new AppletMain();
+		
 		applet = appletParameter;
 		
-		homePage = new JPanel();
-		homePage.setBackground(Color.WHITE);
-		homePage.setLayout(new BorderLayout());
+		sumGameScreen = new JPanel();
+		sumGameScreen.setBackground(Color.WHITE);
+		sumGameScreen.setLayout(new BorderLayout());
+		
+		
+		
+		
 		
 		JLabel titleSummary = new JLabel("<html>Today we're going to learn about protecting the Earth!</html>");
 		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
 		
+		
+		
+		
+		
+		
+		
 		//  button to progress to game
-		openQuizButtonPanel = new JPanel();
-		openQuizButtonPanel.setBackground(Color.WHITE);
-		openQuizButton = new JButton("Start!");
-		openQuizButton.setFont(new Font("Helvetica", Font.BOLD, 16));
-		openQuizButton.addActionListener(new openQuizButtonListener());
-		openQuizButtonPanel.add(openQuizButton);
+		JPanel openFunGameButtonPanel = new JPanel();
+		openFunGameButtonPanel.setBackground(Color.WHITE);
+		JButton openFunGameButton = new JButton("Start!");
+		openFunGameButton.setFont(new Font("Helvetica", Font.BOLD, 16));
+		openFunGameButton.addActionListener(new openQuizButtonListener());
+		openFunGameButtonPanel.add(openFunGameButton);
 		
-		homePage.add(titleSummary, BorderLayout.CENTER);
-		homePage.add(openQuizButtonPanel, BorderLayout.SOUTH);
 		
-		add(homePage);
+		
+		
+		
+		sumGameScreen.add(titleSummary, BorderLayout.CENTER);
+		sumGameScreen.add(openFunGameButtonPanel, BorderLayout.SOUTH);
+		
+		add(sumGameScreen);
 		
 		validate();
 		repaint();
-		
+
 		
 	}
 	
+
 }

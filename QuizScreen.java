@@ -27,6 +27,10 @@ public class QuizScreen extends JPanel {
 private JPanel gamePage;
 private AppletMain applet;
 
+private JPanel openGameButtonPanel;
+
+private JButton openGameButton;
+
 int[] answers;
 	
 	class openQuizButtonListener implements ActionListener
@@ -41,7 +45,7 @@ int[] answers;
 	public QuizScreen(AppletMain appletParameter)
 	{
 		
-		
+		applet = new AppletMain();
 		applet = appletParameter;
 		
 		gamePage = new JPanel();
@@ -54,9 +58,9 @@ int[] answers;
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
 		
 		//button to progress to game
-		JPanel openGameButtonPanel = new JPanel();
+		openGameButtonPanel = new JPanel();
 		openGameButtonPanel.setBackground(Color.WHITE);
-		JButton openGameButton = new JButton("Start!");
+		openGameButton = new JButton("Start!");
 		openGameButton.setFont(new Font("Helvetica", Font.BOLD, 16));
 		openGameButton.addActionListener(new openQuizButtonListener());
 		openGameButtonPanel.add(openGameButton);
