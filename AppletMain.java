@@ -14,6 +14,47 @@ public class AppletMain extends JApplet {
 	
 	private AppletMain myApplet;
 	
+	private QuizScreen newQuiz;
+	
+	private HomeScreen newHome;
+	
+	private SummaryScreen newSummary;
+	
+	public void homeToQuiz() {
+		
+		remove(newHome);
+		
+		newQuiz = new QuizScreen(myApplet);
+		add(newQuiz);
+		
+	}
+	
+	public void quizToGame() {
+		
+		int intToPassToGame = newQuiz.calculateGameDifficulty();
+		remove(newQuiz);
+		newGame = new Game(intToPassToGame, myApplet);
+		
+	}
+	
+	public void gameToSum() {
+		
+		remove(newGame);
+		
+		newSummary = new SummaryScreen(myApplet);
+		add(newSummary);
+		
+	}
+	
+	public void sumToFunGame() {
+		
+		remove(newSummary);
+		
+		add(newGame);
+		
+	}
+	
+	
 	// required method for JApplet
 	// executed upon creation
 	public void init()
@@ -23,10 +64,15 @@ public class AppletMain extends JApplet {
 			 SwingUtilities.invokeAndWait(new Runnable() {
 			 public void run() {
 				 	// would create game under some condition...like user presses 'next' button
-					newGame = new Game(10, myApplet);
+				 
+				 newHome = new HomeScreen(myApplet);
+				 
+				 add(newHome);
+				 
+					//newGame = new Game(10, myApplet);
 					
 					// add Game to JApplet
-					add(newGame);
+					//add(newGame);
 			 	}
 			 	
 			 });

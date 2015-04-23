@@ -1,8 +1,78 @@
+//environment game Board class
 
-public class WelcomeScreen {
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+public class QuizScreen extends JPanel {
 	
-	public int calculateGameDifficulty(int[] answers) {
+private JPanel gamePage;
+private AppletMain applet;
+
+int[] answers;
+	
+	class openQuizButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			applet.quizToGame();
+		}
+	}
+	
+	
+	public QuizScreen(AppletMain appletParameter)
+	{
+		
+		
+		applet = appletParameter;
+		
+		gamePage = new JPanel();
+		gamePage.setBackground(Color.WHITE);
+		gamePage.setLayout(new BorderLayout());
+		
+		JLabel titleSummary = new JLabel("<html>QuizUp!</html>");
+		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
+		titleSummary.setForeground(Color.BLACK);
+		titleSummary.setHorizontalAlignment(JLabel.CENTER);
+		
+		//button to progress to game
+		JPanel openGameButtonPanel = new JPanel();
+		openGameButtonPanel.setBackground(Color.WHITE);
+		JButton openGameButton = new JButton("Start!");
+		openGameButton.setFont(new Font("Helvetica", Font.BOLD, 16));
+		openGameButton.addActionListener(new openQuizButtonListener());
+		openGameButtonPanel.add(openGameButton);
+		
+		gamePage.add(titleSummary, BorderLayout.CENTER);
+		gamePage.add(openGameButtonPanel, BorderLayout.SOUTH);
+		
+		add(gamePage);
+		
+		validate();
+		repaint();
+		
+		
+	}
+	
+public int calculateGameDifficulty() {
 		
 		int sum = 0;
 		
@@ -121,4 +191,7 @@ public class WelcomeScreen {
 		
 		return sum;
 	}
+	
+	
+
 }
