@@ -2,6 +2,8 @@
 
 //the main file
 
+import java.awt.Graphics;
+
 import javax.swing.JApplet;
 import javax.swing.SwingUtilities;
 
@@ -22,6 +24,8 @@ public class AppletMain extends JApplet {
 	//private SummaryScreen newSummary;
 
 	private PurposeScreen newPurpose;
+	
+	private QuestionPanel genericQPanel;
 	
 	private Q1Screen newQ1;
 	
@@ -74,7 +78,7 @@ public class AppletMain extends JApplet {
 		
 		remove(newHome);
 		
-		newQ1 = new Q1Screen(myApplet);
+		newQ1 = new Q1Screen(myApplet, genericQPanel);
 		add(newQ1);
 		
 		validate();
@@ -87,10 +91,9 @@ public class AppletMain extends JApplet {
 		int points = newQ1.getPoints();
 		
 		remove(newQ1);
+		newQ1.remove(genericQPanel);
 		
-		
-		newQ2 = new Q2Screen(myApplet, points);
-		
+		newQ2 = new Q2Screen(myApplet, points, genericQPanel);
 		add(newQ2);
 		
 		validate();
@@ -104,10 +107,9 @@ public class AppletMain extends JApplet {
 		int points = newQ2.getPoints();
 		
 		remove(newQ2);
+		newQ2.remove(genericQPanel);
 		
-		
-		newQ3 = new Q3Screen(myApplet, points);
-		
+		newQ3 = new Q3Screen(myApplet, points, genericQPanel);
 		add(newQ3);
 		
 		validate();
@@ -120,9 +122,9 @@ public class AppletMain extends JApplet {
 		int points = newQ3.getPoints();
 		
 		remove(newQ3);
+		newQ3.remove(genericQPanel);
 		
-		
-		newQ4 = new Q4Screen(myApplet, points);
+		newQ4 = new Q4Screen(myApplet, points, genericQPanel);
 		
 		add(newQ4);
 		
@@ -136,9 +138,9 @@ public class AppletMain extends JApplet {
 		int points = newQ4.getPoints();
 		
 		remove(newQ4);
+		newQ4.remove(genericQPanel);
 		
-		
-		newQ5 = new Q5Screen(myApplet, points);
+		newQ5 = new Q5Screen(myApplet, points, genericQPanel);
 		
 		add(newQ5);
 		
@@ -152,8 +154,9 @@ public class AppletMain extends JApplet {
 		int intToPassToGame = newQ5.getPoints();
 		
 		remove(newQ5);
+		newQ5.remove(genericQPanel);
 		
-		newGame = new Game(1, myApplet); // may need to put in random int to test
+		newGame = new Game(5, myApplet); // may need to put in random int to test
 
 		add(newGame);
 
@@ -168,7 +171,8 @@ public class AppletMain extends JApplet {
 
 		remove(newGame);
 
-		newOQ1 = new OceanQ1Screen(myApplet);
+		genericQPanel.changeBackground();
+		newOQ1 = new OceanQ1Screen(myApplet, genericQPanel);
 		add(newOQ1);
 
 		validate();
@@ -181,8 +185,9 @@ public class AppletMain extends JApplet {
 		int points = newOQ1.getPoints();
 		
 		remove(newOQ1);
+		newOQ1.remove(genericQPanel);
 		
-		newOQ2 = new OceanQ2Screen(myApplet, points);
+		newOQ2 = new OceanQ2Screen(myApplet, points, genericQPanel);
 		add(newOQ2);
 		
 		validate();
@@ -195,8 +200,9 @@ public class AppletMain extends JApplet {
 		int points = newOQ2.getPoints();
 		
 		remove(newOQ2);
+		newOQ2.remove(genericQPanel);
 		
-		newOQ3 = new OceanQ3Screen(myApplet, points);
+		newOQ3 = new OceanQ3Screen(myApplet, points, genericQPanel);
 		add(newOQ3);
 		
 		validate();
@@ -209,8 +215,9 @@ public class AppletMain extends JApplet {
 		int points = newOQ3.getPoints();
 		
 		remove(newOQ3);
+		newOQ3.remove(genericQPanel);
 		
-		newOQ4 = new OceanQ4Screen(myApplet, points);
+		newOQ4 = new OceanQ4Screen(myApplet, points, genericQPanel);
 		add(newOQ4);
 		
 		validate();
@@ -223,8 +230,9 @@ public class AppletMain extends JApplet {
 		int points = newOQ4.getPoints();
 		
 		remove(newOQ4);
+		newOQ4.remove(genericQPanel);
 		
-		newOQ5 = new OceanQ5Screen(myApplet, points);
+		newOQ5 = new OceanQ5Screen(myApplet, points, genericQPanel);
 		add(newOQ5);
 		
 		validate();
@@ -235,6 +243,7 @@ public class AppletMain extends JApplet {
 	
 	public void oq5toGame() {
 		remove(newOQ5);
+		newOQ5.remove(genericQPanel);
 
 		add(newGame);
 
@@ -271,9 +280,14 @@ public class AppletMain extends JApplet {
 					// would create game under some condition...like user
 					// presses 'next' button
 
+					genericQPanel = new QuestionPanel();
 					newPurpose = new PurposeScreen(myApplet);
 
 					add(newPurpose);
+					
+					validate();
+					repaint();
+					
 
 					// newGame = new Game(10, myApplet);
 
@@ -287,5 +301,4 @@ public class AppletMain extends JApplet {
 		}
 
 	}
-
 }
