@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,18 +24,24 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+//import Q3Screen.openQuizButtonListener;
 
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Q1Screen extends JPanel implements QInterface{
 
-	private JPanel q1screen;
-	private JPanel q1screenb;
+	private JPanel questionArea;
+	private JPanel submitArea;
+	private QuestionPanel genericPanel;
 
 	private AppletMain applet;
 
@@ -42,73 +50,37 @@ public class Q1Screen extends JPanel implements QInterface{
 		"B. Gases that are made by plants growing in greenhouses", "C. Gases used to heat greenhouses so "
 				+ "that they are warm enough for plants to grow"}};
 
-	String funFact = "Greenhouse gases are meant for providing a warm space for plants in general to grow when it's too cold for them outside, like in winter. However, the greenhouse effect can become stronger, causing more and more heat to be trapped on Earth, causing the average temperature to rise. This is called global warming.";
+	String funFact = "Greenhouse gases are meant for providing a warm space for "
+			+ "plants in general to grow when it's too cold for "
+			+ "them outside, like in winter. However, the greenhouse "
+			+ "effect can become stronger, causing more and more heat"
+			+ " to be trapped on Earth, causing the average temperature "
+			+ "to rise. This is called global warming.";
 
 	private int points = 7; // random int for testing // this should be 0 for actual
-
-
-	public Q1Screen(AppletMain appletParameter)
-	{
-
-
-		applet = appletParameter;
-
-		q1screen = new JPanel();
-		q1screen.setBackground(Color.WHITE);
-		q1screen.setLayout(new BorderLayout());
-
-		q1screenb = new JPanel();
-		q1screenb.setBackground(Color.WHITE);
-		q1screenb.setLayout(new BorderLayout());
-
-
-
-		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
-		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
-		titleSummary.setForeground(Color.BLACK);
-		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		titleSummary.setVerticalAlignment(JLabel.CENTER);
-
-
-
-		//  button to progress to next question
-		JPanel q2ButtonPanel = new JPanel();
-		q2ButtonPanel.setBackground(Color.WHITE);
-		JButton q2Button = new JButton("Submit!");
-		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q2Button.addActionListener(new openQuizButtonListener());
-		q2ButtonPanel.add(q2Button);
-
-
-		JTextArea q = new JTextArea();
-		q.setText(question[0][0] + "\n" + question[0][2] + "\n" +  question[0][3] + "\n" + question[0][4]);
-		q.setWrapStyleWord(true);
-		q.setFont(new Font("Helvetica", Font.BOLD, 18));
-		q.setEditable(false);
-		JScrollPane scroll = new JScrollPane(q);
-		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		titleSummary.setVerticalAlignment(JLabel.CENTER);
-		
-
-		JTextField field = new JTextField(10);
-		field.setHorizontalAlignment(JTextField.RIGHT);
-		
-		String input = new String();
-		input = field.getText();
-
-		q1screen.add(titleSummary, BorderLayout.NORTH);
-		q1screen.add(scroll, BorderLayout.CENTER);
-		q1screenb.add(field, BorderLayout.CENTER);
-		q1screenb.add(q2ButtonPanel, BorderLayout.SOUTH);
 	
-
-		add(q1screen);
-		add(q1screenb);
-
-		validate();
-		repaint();
-
-
+	public Q1Screen(AppletMain appletParameter, QuestionPanel basePanel)
+	{
+		applet = appletParameter;
+		genericPanel = basePanel;
+        
+		setUpScreen();
+	}
+	
+	public void setUpScreen()
+	{
+		setLayout(new BorderLayout());
+        
+		// edit based on question
+		genericPanel.questionText.setText(question[0][0] + "\n" + question[0][2] + 
+				"\n" +  question[0][3] + "\n" + question[0][4]);
+		
+		JButton submitButton = new JButton("Submit!");
+		submitButton.setFont(new Font("Courier", Font.PLAIN, 14));
+		submitButton.addActionListener(new openQuizButtonListener());
+		genericPanel.qButtonPanel.add(submitButton);
+		
+        add(genericPanel);
 	}
 
 
@@ -250,5 +222,5 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 	}
 
-
 }
+
