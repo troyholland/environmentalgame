@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+//import OceanQ1Screen.openQuizButtonListener;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -37,6 +38,7 @@ public class OceanQ2Screen extends JPanel implements QInterface{
 	private JPanel oq2screenb;
 	
 	private AppletMain applet;
+	private QuestionPanel genericPanel;
 
 	JTextField userInput;
 	
@@ -56,66 +58,30 @@ public class OceanQ2Screen extends JPanel implements QInterface{
 	}
 	
 	
-	public OceanQ2Screen(AppletMain appletParameter, int setAsPoints)
+	public OceanQ2Screen(AppletMain appletParameter, int setAsPoints, QuestionPanel basePanel)
 	{
 		points = setAsPoints;
-		
 		applet = appletParameter;
-
-		oq2screen = new JPanel();
-		oq2screen.setBackground(Color.WHITE);
-		oq2screen.setLayout(new BorderLayout());
+		genericPanel = basePanel;
 		
-		oq2screenb = new JPanel();
-		oq2screenb.setBackground(Color.WHITE);
-		oq2screenb.setLayout(new BorderLayout());
-
-
-		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
-		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
-		titleSummary.setForeground(Color.BLACK);
-		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		titleSummary.setVerticalAlignment(JLabel.CENTER);
-
-
-
-		//  button to progress to next question
-		JPanel q2ButtonPanel = new JPanel();
-		q2ButtonPanel.setBackground(Color.WHITE);
-		JButton q2Button = new JButton("Submit!");
-		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q2Button.addActionListener(new openQuizButtonListener());
-		q2ButtonPanel.add(q2Button);
-
-
-		JTextArea q = new JTextArea();
-		q.setText(question[0][0] + "\n" + question[0][2] + "\n" +  question[0][3] + "\n" + question[0][4]);
-		q.setWrapStyleWord(true);
-		q.setFont(new Font("Helvetica", Font.BOLD, 18));
-		q.setEditable(false);
-		JScrollPane scroll = new JScrollPane(q);
-		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		titleSummary.setVerticalAlignment(JLabel.CENTER);
-		
-
-		JTextField field = new JTextField(10);
-		field.setHorizontalAlignment(JTextField.RIGHT);
-		
-		String input = new String();
-		input = field.getText();
-
-		oq2screen.add(titleSummary, BorderLayout.NORTH);
-		oq2screen.add(scroll, BorderLayout.CENTER);
-		oq2screenb.add(field, BorderLayout.CENTER);
-		oq2screenb.add(q2ButtonPanel, BorderLayout.SOUTH);
+		setUpScreen();
+	}
 	
-
-		add(oq2screen);
-		add(oq2screenb);
-
-		validate();
-		repaint();
-
+	public void setUpScreen()
+	{
+		setLayout(new BorderLayout());
+        
+		// edit based on question
+		genericPanel.questionText.setText(question[0][0] + "\n" + question[0][2] + 
+				"\n" +  question[0][3] + "\n" + question[0][4]);
+		
+		JButton submitButton = new JButton("Submit!");
+		submitButton.setFont(new Font("Courier", Font.PLAIN, 14));
+		submitButton.addActionListener(new openQuizButtonListener());
+		genericPanel.qButtonPanel.removeAll();
+		genericPanel.qButtonPanel.add(submitButton);
+		
+        add(genericPanel);
 	}
 	
 	
