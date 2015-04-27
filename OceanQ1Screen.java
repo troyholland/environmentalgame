@@ -29,19 +29,17 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Q1Screen extends JPanel implements QInterface{
+public class OceanQ1Screen extends JPanel implements QInterface{
 
-	private JPanel q1screen;
+	private JPanel oq1screen;
 	
 	private AppletMain applet;
 
 	JTextField userInput;
 	
-	String[][] question = new String[][]{{"What are greenhouse gases?", "A", "A. Gases that trap heat above the earth", 
-						"B. Gases that are made by plants growing in greenhouses", "C. Gases used to heat greenhouses so "
-								+ "that they are warm enough for plants to grow"}};
+	String[][] question = new String[][]{{"Climate experts predict the average sea level will do what this century?", "C", "A. Fall by about 15 inches", "B. Stay constant", "C. Rise by about 15 inches"}};
 	
-	String funFact = "Greenhouse gases are meant for providing a warm space for plants in general to grow when it's too cold for them outside, like in winter. However, the greenhouse effect can become stronger, causing more and more heat to be trapped on Earth, causing the average temperature to rise. This is called global warming.";
+	String funFact = "Average sea level is expected to rise 7 - 23 inches before the end of this century - and perhaps as much as 31 inches (if, as some models predict, the rate of ice melting from Greenland and Antarctica increases).";
 	
 	private int points = 7; // random int for testing // this should be 0 for actual
 	
@@ -50,26 +48,26 @@ public class Q1Screen extends JPanel implements QInterface{
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			applet.q1toq2();
+			applet.oq1tooq2();
 		}
 	}
 	
 	
-	public Q1Screen(AppletMain appletParameter)
+	public OceanQ1Screen(AppletMain appletParameter)
 	{
 		
 		
 		applet = appletParameter;
 		
-		q1screen = new JPanel();
-		q1screen.setBackground(Color.WHITE);
-		q1screen.setLayout(new BorderLayout());
+		oq1screen = new JPanel();
+		oq1screen.setBackground(Color.WHITE);
+		oq1screen.setLayout(new BorderLayout());
 		
 		
 		
 		
 		
-		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
+		JLabel titleSummary = new JLabel("<html>Global climate change is affecting sea life as well!</html>");
 		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
@@ -82,12 +80,12 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		//  button to progress to next question
-		JPanel q2ButtonPanel = new JPanel();
-		q2ButtonPanel.setBackground(Color.WHITE);
-		JButton q2Button = new JButton("Next!");
-		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q2Button.addActionListener(new openQuizButtonListener());
-		q2ButtonPanel.add(q2Button);
+		JPanel oq2ButtonPanel = new JPanel();
+		oq2ButtonPanel.setBackground(Color.WHITE);
+		JButton oq2Button = new JButton("Next!");
+		oq2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
+		oq2Button.addActionListener(new openQuizButtonListener());
+		oq2ButtonPanel.add(oq2Button);
 		
 		
 		
@@ -110,11 +108,11 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		
-		q1screen.add(titleSummary, BorderLayout.PAGE_START);
-		q1screen.add(q, BorderLayout.CENTER);
-		q1screen.add(q2ButtonPanel, BorderLayout.PAGE_END);
+		oq1screen.add(titleSummary, BorderLayout.PAGE_START);
+		oq1screen.add(q, BorderLayout.CENTER);
+		oq1screen.add(oq2ButtonPanel, BorderLayout.PAGE_END);
 		
-		add(q1screen);
+		add(oq1screen);
 		
 		validate();
 		repaint();

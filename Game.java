@@ -264,7 +264,7 @@ public class Game extends JPanel
 		remakeGame();
 		
 		// open up next page
-		appletMain.gameToSum();
+		appletMain.gameToOQ1();
 	}
 	
 	/*

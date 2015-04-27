@@ -29,47 +29,45 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Q1Screen extends JPanel implements QInterface{
+public class OceanQ4Screen extends JPanel implements QInterface{
 
-	private JPanel q1screen;
+	private JPanel oq4screen;
 	
 	private AppletMain applet;
 
 	JTextField userInput;
 	
-	String[][] question = new String[][]{{"What are greenhouse gases?", "A", "A. Gases that trap heat above the earth", 
-						"B. Gases that are made by plants growing in greenhouses", "C. Gases used to heat greenhouses so "
-								+ "that they are warm enough for plants to grow"}};
+	String[][] question = new String[][]{{"What is one reason we should care about rising sea levels?", "C", "A. We shouldn't. Rising sea levels is a good thing", "B. Rising sea levels will confuse scuba divers", "C. Rising sea levels will increases the rise of coastal flooding and could cause serious population displacement"}};
 	
-	String funFact = "Greenhouse gases are meant for providing a warm space for plants in general to grow when it's too cold for them outside, like in winter. However, the greenhouse effect can become stronger, causing more and more heat to be trapped on Earth, causing the average temperature to rise. This is called global warming.";
+	String funFact = "Rising sea levels – another outcome of global warming – increase the risk of coastal flooding, and could cause population displacement. More than half of the world's population now lives within 60 kilometers of shorelines. Floods can directly cause injury and death, and increase risks of infection from water and vector-borne diseases. Population displacement could increase tensions and potentially the risks of conflict.";
 	
-	private int points = 7; // random int for testing // this should be 0 for actual
+	private int points; 
 	
 	
 	class openQuizButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			applet.q1toq2();
+			applet.oq4tooq5();
 		}
 	}
 	
 	
-	public Q1Screen(AppletMain appletParameter)
+	public OceanQ4Screen(AppletMain appletParameter, int setAsPoints)
 	{
-		
+		points = setAsPoints;
 		
 		applet = appletParameter;
 		
-		q1screen = new JPanel();
-		q1screen.setBackground(Color.WHITE);
-		q1screen.setLayout(new BorderLayout());
+		oq4screen = new JPanel();
+		oq4screen.setBackground(Color.WHITE);
+		oq4screen.setLayout(new BorderLayout());
 		
 		
 		
 		
 		
-		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
+		JLabel titleSummary = new JLabel("<html>Global climate change is affecting sea life as well!</html>");
 		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
@@ -82,12 +80,12 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		//  button to progress to next question
-		JPanel q2ButtonPanel = new JPanel();
-		q2ButtonPanel.setBackground(Color.WHITE);
-		JButton q2Button = new JButton("Next!");
-		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q2Button.addActionListener(new openQuizButtonListener());
-		q2ButtonPanel.add(q2Button);
+		JPanel oq5ButtonPanel = new JPanel();
+		oq5ButtonPanel.setBackground(Color.WHITE);
+		JButton oq5Button = new JButton("Next!");
+		oq5Button.setFont(new Font("Helvetica", Font.BOLD, 16));
+		oq5Button.addActionListener(new openQuizButtonListener());
+		oq5ButtonPanel.add(oq5Button);
 		
 		
 		
@@ -110,11 +108,11 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		
-		q1screen.add(titleSummary, BorderLayout.PAGE_START);
-		q1screen.add(q, BorderLayout.CENTER);
-		q1screen.add(q2ButtonPanel, BorderLayout.PAGE_END);
+		oq4screen.add(titleSummary, BorderLayout.PAGE_START);
+		oq4screen.add(q, BorderLayout.CENTER);
+		oq4screen.add(oq5ButtonPanel, BorderLayout.PAGE_END);
 		
-		add(q1screen);
+		add(oq4screen);
 		
 		validate();
 		repaint();

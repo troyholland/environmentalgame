@@ -29,47 +29,45 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Q1Screen extends JPanel implements QInterface{
+public class OceanQ2Screen extends JPanel implements QInterface{
 
-	private JPanel q1screen;
+	private JPanel oq2screen;
 	
 	private AppletMain applet;
 
 	JTextField userInput;
 	
-	String[][] question = new String[][]{{"What are greenhouse gases?", "A", "A. Gases that trap heat above the earth", 
-						"B. Gases that are made by plants growing in greenhouses", "C. Gases used to heat greenhouses so "
-								+ "that they are warm enough for plants to grow"}};
+	String[][] question = new String[][]{{"Will a small rise in sea level affect people (even in the United States)?", "A", "A. Of course!", "B. No way!", "C. Nobody knows"}};
 	
-	String funFact = "Greenhouse gases are meant for providing a warm space for plants in general to grow when it's too cold for them outside, like in winter. However, the greenhouse effect can become stronger, causing more and more heat to be trapped on Earth, causing the average temperature to rise. This is called global warming.";
+	String funFact = "A small rise in sea level will affect many people, even in the United States. The amount of sea level rise expected to occur as a result of climate change will increase the risk of coastal flooding for millions to hundreds of millions of people around the world, many of whom would have to permanently leave their homes. Global sea level has risen approximately 9 inches, on average, in the last 140 years. This has already put some coastal homes, beaches, roads, bridges, and wildlife at risk. By the year 2100, sea level is expected to rise another 1.5 to 3 feet. Rising seas will make coastal storms and the associated storm surges more frequent and destructive. For example, in New York City what is currently termed a once-in-a-century coastal flooding event could occur as frequently as once per decade.";
 	
-	private int points = 7; // random int for testing // this should be 0 for actual
+	private int points; 
 	
 	
 	class openQuizButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			applet.q1toq2();
+			applet.oq2tooq3();
 		}
 	}
 	
 	
-	public Q1Screen(AppletMain appletParameter)
+	public OceanQ2Screen(AppletMain appletParameter, int setAsPoints)
 	{
-		
+		points = setAsPoints;
 		
 		applet = appletParameter;
 		
-		q1screen = new JPanel();
-		q1screen.setBackground(Color.WHITE);
-		q1screen.setLayout(new BorderLayout());
+		oq2screen = new JPanel();
+		oq2screen.setBackground(Color.WHITE);
+		oq2screen.setLayout(new BorderLayout());
 		
 		
 		
 		
 		
-		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
+		JLabel titleSummary = new JLabel("<html>Global climate change is affecting sea life as well!</html>");
 		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
@@ -82,12 +80,12 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		//  button to progress to next question
-		JPanel q2ButtonPanel = new JPanel();
-		q2ButtonPanel.setBackground(Color.WHITE);
-		JButton q2Button = new JButton("Next!");
-		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q2Button.addActionListener(new openQuizButtonListener());
-		q2ButtonPanel.add(q2Button);
+		JPanel oq3ButtonPanel = new JPanel();
+		oq3ButtonPanel.setBackground(Color.WHITE);
+		JButton oq3Button = new JButton("Next!");
+		oq3Button.setFont(new Font("Helvetica", Font.BOLD, 16));
+		oq3Button.addActionListener(new openQuizButtonListener());
+		oq3ButtonPanel.add(oq3Button);
 		
 		
 		
@@ -110,11 +108,11 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		
-		q1screen.add(titleSummary, BorderLayout.PAGE_START);
-		q1screen.add(q, BorderLayout.CENTER);
-		q1screen.add(q2ButtonPanel, BorderLayout.PAGE_END);
+		oq2screen.add(titleSummary, BorderLayout.PAGE_START);
+		oq2screen.add(q, BorderLayout.CENTER);
+		oq2screen.add(oq3ButtonPanel, BorderLayout.PAGE_END);
 		
-		add(q1screen);
+		add(oq2screen);
 		
 		validate();
 		repaint();

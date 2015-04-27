@@ -34,7 +34,9 @@ public class Q4Screen extends JPanel {
 	
 	private AppletMain applet;
 	
-	String[][] question = new String[][]{{"What is the name for a scientist that studies the weather and climate?", "A", "A. Meteorologist", "B. Climatist", "C. Biologists"}};
+	String[][] question = new String[][]{{"Why do we worry about increased levels of carbon dioxide in the atmosphere?", "A", "A. Excess carbon dioxide in the atmosphere increases global temperatures" , "B. Carbon dioxide makes the sun look blue", "C. We don't worry because climate change is a hoax"}};
+	
+	String funFact = "Carbon dioxide is a necessary ingredient for plants to perform photosynthesis, and a critical component of our atmosphere. However, you can have too much of a good thing. The excess carbon dioxide we are adding to the atmosphere increases global temperatures, leading to climate changes that can harm plants, animals, and humans.";
 	
 	private int points;
 	

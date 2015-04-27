@@ -34,8 +34,9 @@ public class Q2Screen extends JPanel implements QInterface {
 	
 	private AppletMain applet;
 	
-	String[][] question = new String[][]{{"Which of the following is NOT a greenhouse gas?", "B", "A. Methane", "B. Oxygen", "C. Carbon dioxide"}};
+	String[][] question = new String[][]{{"What percentage of climate experts believe humans are causing climate change?", "C", "A. 25%", "B. 50%", "C. 97%"}};
 	
+	String funFact = "In the field of climate studies, a survey of all peer-reviewed papers on the subject 'global climate change' published between 1993 and 2003 shows that not a single paper rejected the consensus position that global warming is man-made. The major scientific agencies of the United States — including the National Aeronautics and Space Administration (NASA) and the National Oceanic and Atmospheric Administration (NOAA) — agree that climate change is occurring and that humans are contributing to it. In 2010, the National Research Council concluded that 'Climate change is occurring, is very likely caused by human activities, and poses significant risks for a broad range of human and natural systems'";
 	
 	private int points;
 	

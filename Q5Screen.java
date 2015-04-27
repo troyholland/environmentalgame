@@ -37,7 +37,9 @@ public class Q5Screen extends JPanel {
 	
 	private AppletMain applet;
 	
-	String[][] question = new String[][]{{"Which of the following methods of transportation does NOT contribute to climate change?", "C", "A. Driving a car", "B. Taking the bus", "C. Riding your bicycle"}};
+	String[][] question = new String[][]{{"An increase of 2°F in average global temperatures would do what?", "B", "A. Nothing. The earth won't care", "B. Crop yields will be severely decreased", "C. The earth will melt"}};
+	
+	String funFact = "Changing the average global temperature by even a degree or two can lead to serious consequences around the globe. For about every 2°F of warming, we can expect to see 5—15% reductions in the yields of crops as currently grown, 3—10% increases in the amount of rain falling during the heaviest precipitation events, which can increase flooding risks, 5—10% decreases in stream flow in some river basins, including the Arkansas and the Rio Grande, 200%—400% increases in the area burned by wildfire in parts of the western United States.";
 	
 	private int points;
 	

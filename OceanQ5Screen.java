@@ -29,47 +29,45 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Q1Screen extends JPanel implements QInterface{
+public class OceanQ5Screen extends JPanel implements QInterface{
 
-	private JPanel q1screen;
+	private JPanel oq5screen;
 	
 	private AppletMain applet;
 
 	JTextField userInput;
 	
-	String[][] question = new String[][]{{"What are greenhouse gases?", "A", "A. Gases that trap heat above the earth", 
-						"B. Gases that are made by plants growing in greenhouses", "C. Gases used to heat greenhouses so "
-								+ "that they are warm enough for plants to grow"}};
+	String[][] question = new String[][]{{"Global climate change will affect rainfall patterns. Why is this a bad thing?", "B", "A. It's not", "B. It will compromise the supply of fresh water", "C. It will make some places muddy"}};
 	
-	String funFact = "Greenhouse gases are meant for providing a warm space for plants in general to grow when it's too cold for them outside, like in winter. However, the greenhouse effect can become stronger, causing more and more heat to be trapped on Earth, causing the average temperature to rise. This is called global warming.";
+	String funFact = "More variable rainfall patterns are likely to compromise the supply of fresh water. Globally, water scarcity already affects four out of every 10 people. A lack of water and poor water quality can compromise hygiene and health. This increases the risk of diarrhea, which kills approximately 2.2 million people every year, as well as trachoma (an eye infection that can lead to blindness) and other illnesses.";
 	
-	private int points = 7; // random int for testing // this should be 0 for actual
+	private int points; 
 	
 	
 	class openQuizButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			applet.q1toq2();
+			applet.oq5toGame();
 		}
 	}
 	
 	
-	public Q1Screen(AppletMain appletParameter)
+	public OceanQ5Screen(AppletMain appletParameter, int setAsPoints)
 	{
-		
+		points = setAsPoints;
 		
 		applet = appletParameter;
 		
-		q1screen = new JPanel();
-		q1screen.setBackground(Color.WHITE);
-		q1screen.setLayout(new BorderLayout());
+		oq5screen = new JPanel();
+		oq5screen.setBackground(Color.WHITE);
+		oq5screen.setLayout(new BorderLayout());
 		
 		
 		
 		
 		
-		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
+		JLabel titleSummary = new JLabel("<html>Global climate change is affecting sea life as well!</html>");
 		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
@@ -82,12 +80,12 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		//  button to progress to next question
-		JPanel q2ButtonPanel = new JPanel();
-		q2ButtonPanel.setBackground(Color.WHITE);
-		JButton q2Button = new JButton("Next!");
-		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q2Button.addActionListener(new openQuizButtonListener());
-		q2ButtonPanel.add(q2Button);
+		JPanel oceanGameButtonPanel = new JPanel();
+		oceanGameButtonPanel.setBackground(Color.WHITE);
+		JButton oceanGameButton = new JButton("Next!");
+		oceanGameButton.setFont(new Font("Helvetica", Font.BOLD, 16));
+		oceanGameButton.addActionListener(new openQuizButtonListener());
+		oceanGameButtonPanel.add(oceanGameButton);
 		
 		
 		
@@ -110,11 +108,11 @@ public class Q1Screen extends JPanel implements QInterface{
 		
 		
 		
-		q1screen.add(titleSummary, BorderLayout.PAGE_START);
-		q1screen.add(q, BorderLayout.CENTER);
-		q1screen.add(q2ButtonPanel, BorderLayout.PAGE_END);
+		oq5screen.add(titleSummary, BorderLayout.PAGE_START);
+		oq5screen.add(q, BorderLayout.CENTER);
+		oq5screen.add(oceanGameButtonPanel, BorderLayout.PAGE_END);
 		
-		add(q1screen);
+		add(oq5screen);
 		
 		validate();
 		repaint();

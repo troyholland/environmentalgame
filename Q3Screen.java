@@ -34,7 +34,9 @@ public class Q3Screen extends JPanel {
 	
 	private AppletMain applet;
 	
-	String[][] question = new String[][]{{"Which country currently emits the most greenhouse gases?", "C", "A. United States", "B. India", "C. China"}};
+	String[][] question = new String[][]{{"In the last century, the global average temperature did what?", "C", "A. Did not change", "B. Increased by less than 1°F", "C. Increased by more than 1°F"}};
+	
+	String funFact = "The global average temperature increased by more than 1.4°F over the last century. In fact, according to the National Oceanic and Atmospheric Administration (NOAA), the decade from 2000 to 2010 was the warmest on record, and 2010 was tied with 2005 as the warmest year on record.";
 	
 	private int points;
 	

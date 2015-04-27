@@ -19,7 +19,7 @@ public class AppletMain extends JApplet {
 
 	private HomeScreen newHome;
 
-	private SummaryScreen newSummary;
+	//private SummaryScreen newSummary;
 
 	private PurposeScreen newPurpose;
 	
@@ -33,6 +33,15 @@ public class AppletMain extends JApplet {
 	
 	private Q5Screen newQ5;
 	
+	private OceanQ1Screen newOQ1;
+	
+	private OceanQ2Screen newOQ2;
+	
+	private OceanQ3Screen newOQ3;
+	
+	private OceanQ4Screen newOQ4;
+	
+	private OceanQ5Screen newOQ5;
 		
 
 	public void purposeToHome() {
@@ -166,28 +175,102 @@ public class AppletMain extends JApplet {
 //
 //	}
 
-	public void gameToSum() {
+	public void gameToOQ1() {
 
 		remove(newGame);
 
-		newSummary = new SummaryScreen(myApplet);
-		add(newSummary);
+		newOQ1 = new OceanQ1Screen(myApplet);
+		add(newOQ1);
 
 		validate();
 		repaint();
 
 	}
-
-	public void sumToFunGame() {
-
-		remove(newSummary);
+	
+	public void oq1tooq2() {
+	
+		int points = newOQ1.getPoints();
+		
+		remove(newOQ1);
+		
+		newOQ2 = new OceanQ2Screen(myApplet, points);
+		add(newOQ2);
+		
+		validate();
+		repaint();
+		
+	}
+	
+	public void oq2tooq3() {
+		
+		int points = newOQ2.getPoints();
+		
+		remove(newOQ2);
+		
+		newOQ3 = new OceanQ3Screen(myApplet, points);
+		add(newOQ3);
+		
+		validate();
+		repaint();
+		
+	}
+	
+	public void oq3tooq4() {
+		
+		int points = newOQ3.getPoints();
+		
+		remove(newOQ3);
+		
+		newOQ4 = new OceanQ4Screen(myApplet, points);
+		add(newOQ4);
+		
+		validate();
+		repaint();
+		
+	}
+	
+	public void oq4tooq5() {
+		
+		int points = newOQ4.getPoints();
+		
+		remove(newOQ4);
+		
+		newOQ5 = new OceanQ5Screen(myApplet, points);
+		add(newOQ5);
+		
+		validate();
+		repaint();
+		
+	}
+	
+	
+	public void oq5toGame() {
+		
+		int intToPassToGame = newOQ5.getPoints();
+		
+		remove(newOQ5);
+		
+		newGame = new Game(intToPassToGame, myApplet); // may need to put in random int to test
 
 		add(newGame);
 
 		validate();
 		repaint();
-
+		
 	}
+	
+	
+
+//	public void sumToFunGame() {
+//
+//		remove(newSummary);
+//
+//		add(newGame);
+//
+//		validate();
+//		repaint();
+//
+//	}
 
 	// required method for JApplet
 	// executed upon creation
