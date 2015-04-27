@@ -34,7 +34,7 @@ public class HomeScreen extends JPanel {
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			applet.homeToQuiz();
+			applet.homeToQ1();
 		}
 	}
 	
@@ -49,8 +49,9 @@ public class HomeScreen extends JPanel {
 		homePage.setBackground(Color.WHITE);
 		homePage.setLayout(new BorderLayout());
 		
-		JLabel titleSummary = new JLabel("<html>Today we're going to learn about protecting the Earth!</html>");
-		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
+		
+		JLabel titleSummary = new JLabel("<html><body><p>Today we're going to learn</p><p>about protecting the Earth!</p></body></html>");
+		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 28));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
 		
