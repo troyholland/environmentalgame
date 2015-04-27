@@ -22,7 +22,10 @@ import javax.swing.JLabel;
 //import QuizScreen.openQuizButtonListener;
 
 
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 
 import java.awt.Font;
 import java.awt.Color;
@@ -34,6 +37,7 @@ import java.awt.event.ActionEvent;
 public class Q5Screen extends JPanel {
 
 	private JPanel q5screen;
+	private JPanel q5screenb;
 	
 	private AppletMain applet;
 	
@@ -58,51 +62,61 @@ public class Q5Screen extends JPanel {
 		points = setAsPoints;
 		
 		applet = appletParameter;
-		
+
 		q5screen = new JPanel();
 		q5screen.setBackground(Color.WHITE);
 		q5screen.setLayout(new BorderLayout());
 		
-		
-		
-		
-		
-		JLabel titleSummary = new JLabel("<html>Let's See What You Know!</html>");
+		q5screenb = new JPanel();
+		q5screenb.setBackground(Color.WHITE);
+		q5screenb.setLayout(new BorderLayout());
+
+
+		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
 		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		
-		
-		
-		
-		
-		
-		// button to progress to the game
-		JPanel openGameButtonPanel = new JPanel();
-		openGameButtonPanel.setBackground(Color.WHITE);
-		JButton openGameButton = new JButton("Start!");
-		openGameButton.setFont(new Font("Helvetica", Font.BOLD, 16));
-		openGameButton.addActionListener(new openQuizButtonListener());
-		openGameButtonPanel.add(openGameButton);
-		
-		
+		titleSummary.setVerticalAlignment(JLabel.CENTER);
+
+
+
+		//  button to progress to next question
+		JPanel q2ButtonPanel = new JPanel();
+		q2ButtonPanel.setBackground(Color.WHITE);
+		JButton q2Button = new JButton("Submit!");
+		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
+		q2Button.addActionListener(new openQuizButtonListener());
+		q2ButtonPanel.add(q2Button);
+
+
 		JTextArea q = new JTextArea();
 		q.setText(question[0][0] + "\n" + question[0][2] + "\n" +  question[0][3] + "\n" + question[0][4]);
 		q.setWrapStyleWord(true);
-		q.setFont(new Font("Helvetica", Font.BOLD, 20));
+		q.setFont(new Font("Helvetica", Font.BOLD, 18));
+		q.setEditable(false);
+		JScrollPane scroll = new JScrollPane(q);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
 		titleSummary.setVerticalAlignment(JLabel.CENTER);
 		
-		q5screen.add(titleSummary, BorderLayout.PAGE_START);
-		q5screen.add(q, BorderLayout.CENTER);
-		q5screen.add(openGameButtonPanel, BorderLayout.PAGE_END);
+
+		JTextField field = new JTextField(10);
+		field.setHorizontalAlignment(JTextField.RIGHT);
 		
+		String input = new String();
+		input = field.getText();
+
+		q5screen.add(titleSummary, BorderLayout.NORTH);
+		q5screen.add(scroll, BorderLayout.CENTER);
+		q5screenb.add(field, BorderLayout.CENTER);
+		q5screenb.add(q2ButtonPanel, BorderLayout.SOUTH);
+	
+
 		add(q5screen);
-		
+		add(q5screenb);
+
 		validate();
 		repaint();
 
-		
 	}
 	
 	

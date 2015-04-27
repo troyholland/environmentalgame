@@ -19,8 +19,10 @@ import javax.swing.JLabel;
 //import SummaryScreen.openQuizButtonListener;
 
 
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
 
 import java.awt.Font;
 import java.awt.Color;
@@ -32,6 +34,7 @@ import java.awt.event.ActionEvent;
 public class OceanQ2Screen extends JPanel implements QInterface{
 
 	private JPanel oq2screen;
+	private JPanel oq2screenb;
 	
 	private AppletMain applet;
 
@@ -58,66 +61,61 @@ public class OceanQ2Screen extends JPanel implements QInterface{
 		points = setAsPoints;
 		
 		applet = appletParameter;
-		
+
 		oq2screen = new JPanel();
 		oq2screen.setBackground(Color.WHITE);
 		oq2screen.setLayout(new BorderLayout());
 		
-		
-		
-		
-		
-		JLabel titleSummary = new JLabel("<html>Global climate change is affecting sea life as well!</html>");
+		oq2screenb = new JPanel();
+		oq2screenb.setBackground(Color.WHITE);
+		oq2screenb.setLayout(new BorderLayout());
+
+
+		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
 		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
 		titleSummary.setVerticalAlignment(JLabel.CENTER);
-		
-		
-		
-		
-		
-		
-		
+
+
+
 		//  button to progress to next question
-		JPanel oq3ButtonPanel = new JPanel();
-		oq3ButtonPanel.setBackground(Color.WHITE);
-		JButton oq3Button = new JButton("Next!");
-		oq3Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		oq3Button.addActionListener(new openQuizButtonListener());
-		oq3ButtonPanel.add(oq3Button);
-		
-		
-		
+		JPanel q2ButtonPanel = new JPanel();
+		q2ButtonPanel.setBackground(Color.WHITE);
+		JButton q2Button = new JButton("Submit!");
+		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
+		q2Button.addActionListener(new openQuizButtonListener());
+		q2ButtonPanel.add(q2Button);
+
+
 		JTextArea q = new JTextArea();
 		q.setText(question[0][0] + "\n" + question[0][2] + "\n" +  question[0][3] + "\n" + question[0][4]);
 		q.setWrapStyleWord(true);
-		q.setFont(new Font("Helvetica", Font.BOLD, 20));
+		q.setFont(new Font("Helvetica", Font.BOLD, 18));
+		q.setEditable(false);
+		JScrollPane scroll = new JScrollPane(q);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
 		titleSummary.setVerticalAlignment(JLabel.CENTER);
 		
-		userInput = new JTextField(1);
+
+		JTextField field = new JTextField(10);
+		field.setHorizontalAlignment(JTextField.RIGHT);
 		
 		String input = new String();
-		
-		input = userInput.getText();
-		
-		TextHandler handler = new TextHandler();
-		userInput.addActionListener(handler);
-		
-		
-		
-		
-		oq2screen.add(titleSummary, BorderLayout.PAGE_START);
-		oq2screen.add(q, BorderLayout.CENTER);
-		oq2screen.add(oq3ButtonPanel, BorderLayout.PAGE_END);
-		
+		input = field.getText();
+
+		oq2screen.add(titleSummary, BorderLayout.NORTH);
+		oq2screen.add(scroll, BorderLayout.CENTER);
+		oq2screenb.add(field, BorderLayout.CENTER);
+		oq2screenb.add(q2ButtonPanel, BorderLayout.SOUTH);
+	
+
 		add(oq2screen);
-		
+		add(oq2screenb);
+
 		validate();
 		repaint();
 
-		
 	}
 	
 	

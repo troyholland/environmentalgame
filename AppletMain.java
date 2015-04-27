@@ -42,6 +42,8 @@ public class AppletMain extends JApplet {
 	private OceanQ4Screen newOQ4;
 	
 	private OceanQ5Screen newOQ5;
+	
+	private ReviewScreen newReview;
 		
 
 	public void purposeToHome() {
@@ -151,7 +153,7 @@ public class AppletMain extends JApplet {
 		
 		remove(newQ5);
 		
-		newGame = new Game(intToPassToGame, myApplet); // may need to put in random int to test
+		newGame = new Game(1, myApplet); // may need to put in random int to test
 
 		add(newGame);
 
@@ -161,19 +163,6 @@ public class AppletMain extends JApplet {
 	}
 
 	
-
-//	public void quizToGame() {
-//
-//		// int intToPassToGame = newQuiz.calculateGameDifficulty();
-//		remove(newQuiz);
-//		newGame = new Game(7, myApplet); // put in random int
-//
-//		add(newGame);
-//
-//		validate();
-//		repaint();
-//
-//	}
 
 	public void gameToOQ1() {
 
@@ -245,12 +234,7 @@ public class AppletMain extends JApplet {
 	
 	
 	public void oq5toGame() {
-		
-		int intToPassToGame = newOQ5.getPoints();
-		
 		remove(newOQ5);
-		
-		newGame = new Game(intToPassToGame, myApplet); // may need to put in random int to test
 
 		add(newGame);
 
@@ -260,21 +244,22 @@ public class AppletMain extends JApplet {
 	}
 	
 	
-
-//	public void sumToFunGame() {
-//
-//		remove(newSummary);
-//
-//		add(newGame);
-//
-//		validate();
-//		repaint();
-//
-//	}
+	public void gameToReview() {
+		remove(newGame);
+		
+		newReview = new ReviewScreen();
+		
+		add(newReview);
+		
+		validate();
+		repaint();
+	}
+	
 
 	// required method for JApplet
 	// executed upon creation
 	public void init() {
+		
 		myApplet = this;
 		// set up JApplet
 		setSize(frameWidth, frameHeight);

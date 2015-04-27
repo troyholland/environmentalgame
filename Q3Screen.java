@@ -19,7 +19,10 @@ import javax.swing.JLabel;
 //import SummaryScreen.openQuizButtonListener;
 
 
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 
 import java.awt.Font;
 import java.awt.Color;
@@ -31,6 +34,8 @@ import java.awt.event.ActionEvent;
 public class Q3Screen extends JPanel {
 
 	private JPanel q3screen;
+	private JPanel q3screenb;
+	
 	
 	private AppletMain applet;
 	
@@ -55,49 +60,59 @@ public class Q3Screen extends JPanel {
 		points = setAsPoints;
 		
 		applet = appletParameter;
-		
+		applet = appletParameter;
+
 		q3screen = new JPanel();
 		q3screen.setBackground(Color.WHITE);
 		q3screen.setLayout(new BorderLayout());
 		
-		
-		
-		
-		
-		JLabel titleSummary = new JLabel("<html>Let's See What You Know!</html>");
-		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
+		q3screenb = new JPanel();
+		q3screenb.setBackground(Color.WHITE);
+		q3screenb.setLayout(new BorderLayout());
+
+
+		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
+		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 40));
 		titleSummary.setForeground(Color.BLACK);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		
-		
-		
-		
-		
-		
-		
+		titleSummary.setVerticalAlignment(JLabel.CENTER);
+
+
+
 		//  button to progress to next question
-		JPanel q4ButtonPanel = new JPanel();
-		q4ButtonPanel.setBackground(Color.WHITE);
-		JButton q4Button = new JButton("Next!");
-		q4Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q4Button.addActionListener(new openQuizButtonListener());
-		q4ButtonPanel.add(q4Button);
-		
-		
+		JPanel q2ButtonPanel = new JPanel();
+		q2ButtonPanel.setBackground(Color.WHITE);
+		JButton q2Button = new JButton("Submit!");
+		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
+		q2Button.addActionListener(new openQuizButtonListener());
+		q2ButtonPanel.add(q2Button);
+
+
 		JTextArea q = new JTextArea();
 		q.setText(question[0][0] + "\n" + question[0][2] + "\n" +  question[0][3] + "\n" + question[0][4]);
 		q.setWrapStyleWord(true);
-		q.setFont(new Font("Helvetica", Font.BOLD, 20));
+		q.setFont(new Font("Helvetica", Font.BOLD, 18));
+		q.setEditable(false);
+		JScrollPane scroll = new JScrollPane(q);
 		titleSummary.setHorizontalAlignment(JLabel.CENTER);
 		titleSummary.setVerticalAlignment(JLabel.CENTER);
 		
-		q3screen.add(titleSummary, BorderLayout.PAGE_START);
-		q3screen.add(q, BorderLayout.CENTER);
-		q3screen.add(q4ButtonPanel, BorderLayout.PAGE_END);
+
+		JTextField field = new JTextField(10);
+		field.setHorizontalAlignment(JTextField.RIGHT);
 		
-		
+		String input = new String();
+		input = field.getText();
+
+		q3screen.add(titleSummary, BorderLayout.NORTH);
+		q3screen.add(scroll, BorderLayout.CENTER);
+		q3screenb.add(field, BorderLayout.CENTER);
+		q3screenb.add(q2ButtonPanel, BorderLayout.SOUTH);
+	
+
 		add(q3screen);
-		
+		add(q3screenb);
+
 		validate();
 		repaint();
 
