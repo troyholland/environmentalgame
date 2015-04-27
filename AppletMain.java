@@ -171,6 +171,7 @@ public class AppletMain extends JApplet {
 
 		remove(newGame);
 
+		genericQPanel.changeBackground();
 		newOQ1 = new OceanQ1Screen(myApplet, genericQPanel);
 		add(newOQ1);
 
