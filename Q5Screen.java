@@ -26,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+//import Q4Screen.openQuizButtonListener;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -40,6 +41,7 @@ public class Q5Screen extends JPanel {
 	private JPanel q5screenb;
 	
 	private AppletMain applet;
+	private QuestionPanel genericPanel;
 	
 	String[][] question = new String[][]{{"An increase of 2°F in average global temperatures would do what?", "B", "A. Nothing. The earth won't care", "B. Crop yields will be severely decreased", "C. The earth will melt"}};
 	
@@ -57,66 +59,30 @@ public class Q5Screen extends JPanel {
 	}
 	
 	
-	public Q5Screen(AppletMain appletParameter, int setAsPoints)
+	public Q5Screen(AppletMain appletParameter, int setAsPoints, QuestionPanel basePanel)
 	{
 		points = setAsPoints;
-		
 		applet = appletParameter;
-
-		q5screen = new JPanel();
-		q5screen.setBackground(Color.WHITE);
-		q5screen.setLayout(new BorderLayout());
+		genericPanel = basePanel;
 		
-		q5screenb = new JPanel();
-		q5screenb.setBackground(Color.WHITE);
-		q5screenb.setLayout(new BorderLayout());
-
-
-		JLabel titleSummary = new JLabel("<html>Let's see what you know!</html>");
-		titleSummary.setFont(new Font("Helvetica", Font.BOLD, 32));
-		titleSummary.setForeground(Color.BLACK);
-		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		titleSummary.setVerticalAlignment(JLabel.CENTER);
-
-
-
-		//  button to progress to next question
-		JPanel q2ButtonPanel = new JPanel();
-		q2ButtonPanel.setBackground(Color.WHITE);
-		JButton q2Button = new JButton("Submit!");
-		q2Button.setFont(new Font("Helvetica", Font.BOLD, 16));
-		q2Button.addActionListener(new openQuizButtonListener());
-		q2ButtonPanel.add(q2Button);
-
-
-		JTextArea q = new JTextArea();
-		q.setText(question[0][0] + "\n" + question[0][2] + "\n" +  question[0][3] + "\n" + question[0][4]);
-		q.setWrapStyleWord(true);
-		q.setFont(new Font("Helvetica", Font.BOLD, 18));
-		q.setEditable(false);
-		JScrollPane scroll = new JScrollPane(q);
-		titleSummary.setHorizontalAlignment(JLabel.CENTER);
-		titleSummary.setVerticalAlignment(JLabel.CENTER);
-		
-
-		JTextField field = new JTextField(10);
-		field.setHorizontalAlignment(JTextField.RIGHT);
-		
-		String input = new String();
-		input = field.getText();
-
-		q5screen.add(titleSummary, BorderLayout.NORTH);
-		q5screen.add(scroll, BorderLayout.CENTER);
-		q5screenb.add(field, BorderLayout.CENTER);
-		q5screenb.add(q2ButtonPanel, BorderLayout.SOUTH);
+		setUpScreen();
+	}
 	
-
-		add(q5screen);
-		add(q5screenb);
-
-		validate();
-		repaint();
-
+	public void setUpScreen()
+	{
+		setLayout(new BorderLayout());
+        
+		// edit based on question
+		genericPanel.questionText.setText(question[0][0] + "\n" + question[0][2] + 
+				"\n" +  question[0][3] + "\n" + question[0][4]);
+		
+		JButton submitButton = new JButton("Submit!");
+		submitButton.setFont(new Font("Courier", Font.PLAIN, 14));
+		submitButton.addActionListener(new openQuizButtonListener());
+		genericPanel.qButtonPanel.removeAll();
+		genericPanel.qButtonPanel.add(submitButton);
+		
+        add(genericPanel);
 	}
 	
 	
